@@ -1,0 +1,33 @@
+use db;
+
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(30),
+    Age INT
+);
+
+CREATE TABLE Courses (
+    CourseID INT PRIMARY KEY,
+    CourseName VARCHAR(20)
+);
+
+CREATE TABLE Enrollments (
+    StudentID INT REFERENCES Student(StudentID),
+    CourseID INT REFERENCES Courses(CourseID)
+);
+
+INSERT INTO Students VALUES (1, 'Alice', 20);
+INSERT INTO Students VALUES (2, 'Bob', 22);
+INSERT INTO Students VALUES (3, 'Charlie', 21);
+INSERT INTO Students VALUES (4, 'David', 19);
+
+INSERT INTO Courses VALUES (101, 'Database Management');
+INSERT INTO Courses VALUES (102, 'Algorithms');
+INSERT INTO Courses VALUES (103, 'Web Development');
+
+INSERT INTO Enrollments VALUES (1, 101);
+INSERT INTO Enrollments VALUES (1, 102);
+INSERT INTO Enrollments VALUES (2, 102);
+INSERT INTO Enrollments VALUES (3, 101);
+INSERT INTO Enrollments VALUES (3, 103);
+INSERT INTO Enrollments VALUES (4, 103);
